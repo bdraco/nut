@@ -112,6 +112,7 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
                     firmware,
                 )
             )
+            _LOGGER.debug("Created sensor entity: %s: %s", sensor_type, entities[-1])
         else:
             _LOGGER.warning(
                 "Sensor type: %s does not appear in the NUT status "
@@ -137,6 +138,8 @@ class NUTSensor(Entity):
         firmware,
     ):
         """Initialize the sensor."""
+        _LOGGER.debug("NUTSensor init: %s", sensor_type)
+
         self._coordinator = coordinator
         self._type = sensor_type
         self._manufacturer = manufacturer
