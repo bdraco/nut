@@ -99,6 +99,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry):
 
 async def _async_update_listener(hass: HomeAssistant, entry: ConfigEntry):
     """Handle options update."""
+    _LOGGER.debug("Reload of NUT config.")
     await hass.config_entries.async_reload(entry.entry_id)
 
 
