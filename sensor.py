@@ -197,6 +197,8 @@ class NUTSensor(Entity):
     @property
     def state(self):
         """Return entity state from ups."""
+        _LOGGER.debug("Updating state for: %s", self._type)
+
         if self._type == KEY_STATUS_DISPLAY:
             return _format_display_state(self._data.status)
         return self._data.status.get(self._type)
@@ -214,6 +216,7 @@ class NUTSensor(Entity):
     @property
     def available(self):
         """Return if entity is available."""
+        _LOGGER.debug("Updating available state for: %s", self._type)
         return self._coordinator.last_update_success
 
     @property
