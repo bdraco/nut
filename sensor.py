@@ -87,6 +87,9 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
     else:
         resources = config_entry.data[CONF_RESOURCES]
 
+    _LOGGER.debug("Available resources: %s", status)
+    _LOGGER.debug("Configured resources: %s", resources)
+
     for resource in resources:
         sensor_type = resource.lower()
 
