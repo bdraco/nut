@@ -92,12 +92,14 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
 
     for resource in resources:
         sensor_type = resource.lower()
+        _LOGGER.debug("Checking to see if sensor type can be added: %s", sensor_type)
 
         # Display status is a special case that falls back to the status value
         # of the UPS instead.
         if sensor_type in status or (
             sensor_type == KEY_STATUS_DISPLAY and KEY_STATUS in status
         ):
+            _LOGGER.debug("Adding sensor type: %s", sensor_type)
             entities.append(
                 NUTSensor(
                     coordinator,
